@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+
+<launch>
+  <!-- Gazebo options -->
+  <arg name="gazebo_gui" default="true" doc="Start Gazebo GUI"/>
+  <arg name="paused" default="false" doc="Start Gazebo paused"/>
+  <arg name="world_pose" default="-x 0 -y 0 -z 0 -R 0 -P 0 -Y 0" doc="Pose to spawn the robot at"/>
+
+
+  <!-- Start Gazebo paused to allow the controllers to pickup the initial pose -->
+
+  <!-- Set the robot urdf on the parameter server -->
+
+  <param name="robot_description" textfile="$(find franka_panda_description)/robots/panda_without_gripper.urdf"/>
+
+  
+
+
+  <!-- Set the robot urdf on the parameter server -->
+  <!-- <param name="robot_description" textfile="$(find movit_jordon)/config/gazebo_jordon_robot.urdf" /> -->
+
+  <!-- Unpause the simulation after loading the robot model -->
+
+
+  <!-- Spawn the robot in Gazebo -->
+  <node name="spawn_gazebo_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model robot272 "
+    respawn="false" output="screen" />
+
+
+</launch>
